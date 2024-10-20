@@ -40,7 +40,16 @@
 </head>
 
 <body>
-
+    <script>
+        function downloadCV() {
+            const link = document.createElement('a');
+            link.href = '/docs/Desai,Dhruv.pdf'; // Replace with the actual file path
+            link.download = 'cv.pdf'; // Optional: set a custom file name for the downloaded file
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
     <div id="main-wrapper">
         <header>
             <!-- Side Nav Start -->
@@ -126,7 +135,7 @@
                         <div class="col-lg-5">
                             <!-- About Profile Start -->
                             <div class="about-profile">
-                                <img src="img/about/img.jpg" alt="about-profile">
+                                <img src="img/about/Dhruv_pic.jpg" alt="about-profile">
                                 <!-- About Logo Start 
                                 <div class="about-logo">
                                     <img src="img/about/dhruv.png" alt="about-logo">
@@ -139,8 +148,8 @@
                             <!-- About Text Start -->
                             <div class="about-text">
                                 <h6 class="space-caps">I’m Dhruv Desai</h6>
-                                <h6><strong>For over 6 months I have been learning python for Data Science .</strong></h6>
-                                <p class="des-text">I’m in Final year of Computer Engineering, I like to explore my skills and willingly work with organization </p>
+                                <h6><strong>2x AWS Certified. Terraform HashiCorp Certificate (003)</strong></h6>
+                                <p class="des-text"> I’m currently learning DevOps tools, I like to explore my skills and willingly work with organization. Apart from technology, I mostly spare my leisure time with exploring my skills. I like Cooking, listening music,walking and Traveling. </p>
                                 <!-- About Info Start -->
                                 <div class="about-info">
                                     <ul>
@@ -195,6 +204,7 @@
                                 <div class="about-cv">
                                     <a href="#" class="btn-anime">Download CV</a>
                                 </div>
+                                <!-- About CV End -->
                                 <!-- About CV End -->
                             </div>
                             <!-- About Text End -->
