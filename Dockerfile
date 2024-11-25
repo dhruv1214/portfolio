@@ -1,24 +1,29 @@
-# The FROM command specifies the base image to use when creating a new image.
-# Here, 'redhat/ubi8' is used as the base image.
-#1.Base Image:
-FROM redhat/ubi8
-#2. Set Maintainer Label:
-# The LABEL command adds metadata to the image. 
-# Here, the maintainer's information is set to 'kjavaman'.
+# 1. Use a minimal Red Hat UBI base image
+FROM redhat/ubi8-minimal
+
+# 2. Set Maintainer Label
 LABEL maintainer="dhruv"
-#3. Install Apache Web Server:
-# The RUN command executes commands during the image build process. 
-# Here, it installs the 'httpd' web server.
-RUN yum -y install httpd
-#4. Copy HTML File:
-# The COPY command copies files or directories from the host system to the image's file system.
-# Here, it copies the 'index.html' file to the container's '/var/www/html/' location.
+
+# 3. Install Apache and clean up unnecessary files
+RUN microdnf install httpd && \
+    microdnf clean all && \
+    rm -rf /var/cache/yum
+
+# 4. Copy website files and directories
 COPY index.html /var/www/html/
-#5.Set Entrypoint:
-# The ENTRYPOINT command specifies the command to run when the container starts.
-# Here, it runs the Apache HTTP server in FOREGROUND mode.
+COPY portfolio.html /var/www/html/
+COPY about.html /var/www/html/
+COPY contact.html /var/www/html/
+COPY resume.html /var/www/html/
+COPY services.html /var/www/html/
+COPY ./css /var/www/html/css
+COPY ./js /var/www/html/js
+COPY ./fonts /var/www/html/fonts
+COPY ./docs /var/www/html/docs
+COPY ./img /var/www/html/img
+
+# 5. Set Entrypoint to run Apache in the foreground
 ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
-#6. Expose Port:
-# The EXPOSE command specifies the ports that the container will listen on.
-# In this case, port 80 is used to receive HTTP requests.
+
+# 6. Expose port 80
 EXPOSE 80

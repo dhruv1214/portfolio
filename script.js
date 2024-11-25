@@ -1,17 +1,16 @@
 (function($) {
     "use strict";
 
-    navManu()
+    navManu();
     niceScroll();
-    isotope()
+    isotope();
     venobox();
-    counterUp()
-    wow()
-
-
-    /
+    counterUp();
+    wow();
 
 })(jQuery);
+
+
 
 
 /*=====================
