@@ -23,7 +23,7 @@ COPY ./docs /var/www/html/docs
 COPY ./img /var/www/html/img
 
 # 5. Set Entrypoint to run Apache in the foreground
-ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+ENTRYPOINT ["/usr/sbin/httpd", "-D", ""]
 
 # 6. Expose port 80
 EXPOSE 80
